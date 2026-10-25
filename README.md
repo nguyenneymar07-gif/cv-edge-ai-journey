@@ -10,3 +10,7 @@ Nhật ký học Computer Vision + Edge AI (11/2026 - 6/2029).
 - Đã làm: maytinh.cpp (máy tính 4 phép, chặn chia cho 0, kiểm tra toán tử)
 - Đã học: kiểu `char`, `if / else if`, `int` so với `float`, `.gitignore`
 - Đang dở: CS50P bài 1, thêm GaussianBlur/Canny vào webcam.py
+## 25/10/2026 (ngày 3)
+- Đã làm: maytinh.cpp chạy lặp bằng while, thoát khi gõ q
+- Đã học: while, break, continue, std::string, cin đọc char chỉ lấy một ký tự mỗi lần
+- Đang dở: xử lý khi gõ chữ vào chỗ nhập số (cin.clear, cin.ignore), CS50P bài 1
