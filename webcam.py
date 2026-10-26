@@ -15,8 +15,8 @@ while True:
     blurred_frame = cv2.GaussianBlur(gray_frame, (5, 5), 0)
     edge_frame = cv2.Canny(blurred_frame, 50, 250)
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-    mask = cv2.inRange(hsv, lower, upper)
-    result = cv2.bitwise_and(frame, frame, mask=mask)
+    mask = cv2.inRange(hsv, lower, upper) #điểm ảnh nào nằm trong khoảng lower đến upper thì thành trắng (255), còn lại đen (0)
+    result = cv2.bitwise_and(frame, frame, mask=mask) #: chỉ giữ lại phần ảnh gốc ở chỗ mặt nạ trắng, phần còn lại thành đen.
     
     cv2.imshow("webcam", frame)
     cv2.imshow("webcam_gray", gray_frame)
