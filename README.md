@@ -23,3 +23,7 @@ Nhật ký học Computer Vision + Edge AI (11/2026 - 6/2029).
 - Canny đã thử: (50,150) → nhận xét: nhiều viền hơn
 - Đang dở: chỉnh khoảng HSV cho ổn định hơn, thử thêm cặp ngưỡng Canny
 - Mai làm: findContours trên mặt nạ, vẽ khung quanh vật, in tọa độ tâm; lướt CS50P và NumPy nếu còn giờ
+## 27/10/2026(ngày 5)
+-Đã làm :findContours trên mặt nạ, vẽ khung quanh vật, in tọa độ tâm
+-Đã kiểm chứng với khăn xanh, khoảng HSV (100,120,70)-(130,255,255).
+![alt text](mau-khan.png)
