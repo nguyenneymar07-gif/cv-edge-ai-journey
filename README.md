@@ -30,4 +30,4 @@ Nhật ký học Computer Vision + Edge AI (11/2026 - 6/2029).
 - Đã kiểm chứng: khăn xanh biển, khoảng HSV (100,120,70)-(130,255,255) bắt đúng vật, không dính tay
 - Không đăng ảnh/GIF demo vì lộ thông tin cá nhân
 - Đang dở: làm mượt sai số bằng trung bình trượt (deque), chưa đo trước/sau
-- Tiếp theo: đo độ dao động (pstdev) khi giữ vật đứng yên, thử maxlen 3/5/10 rồi ghi nhận xét về đánh đổi giữa mượt và trễ
+- Tiếp theo: đo độ dao động (pstdev) khi giữ vật đứng yên, thử maxlen 3/5/10 rồi ghi nhận xét về đánh đổi giữa mượt và trễ 
