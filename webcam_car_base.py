@@ -24,6 +24,7 @@ while True:
         rong_khung = frame.shape[1]
         lech = toa_do_tam[0] - rong_khung / 2
         sai_so = lech / (rong_khung / 2) * 100
+        print(f"{sai_so:.2f}")
     
         if sai_so < -5 :
             huong = "SANG TRAI"
