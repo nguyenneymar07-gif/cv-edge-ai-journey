@@ -7,6 +7,7 @@ if not cap.isOpened():
 lower = (100, 120, 70)
 upper = (130, 255, 255)
 
+
 while True:
     ok, frame = cap.read()
     if not ok:

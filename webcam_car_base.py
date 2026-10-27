@@ -1,11 +1,20 @@
 import cv2
+from collections import deque
+import statistics
+
+def nhieu(day):
+    return statistics.pstdev([b - a for a, b in zip(day, day[1:])])
+
+lich_su = deque(maxlen=10)
+tho  = []
+muot = []
 
 cap = cv2.VideoCapture(0)
 if not cap.isOpened():
     raise RuntimeError("Không mở được camera")
 
-lower = (100, 120, 70)
-upper = (130, 255, 255)
+lower = (140, 60, 100)
+upper = (175, 255, 255)
 
 while True:
     ok, frame = cap.read()
@@ -24,19 +33,34 @@ while True:
         rong_khung = frame.shape[1]
         lech = toa_do_tam[0] - rong_khung / 2
         sai_so = lech / (rong_khung / 2) * 100
-        print(f"{sai_so:.2f}")
-    
-        if sai_so < -5 :
+        lich_su.append(sai_so)
+        sai_so_muot = sum(lich_su) / len(lich_su)
+        tho.append(sai_so)
+        muot.append(sai_so_muot)
+        if len(tho) >= 150:
+            break
+        print(f"{sai_so_muot:.2f}")
+        s_tho  = statistics.pstdev(tho)
+        s_muot = statistics.pstdev(muot)
+        if sai_so_muot < -5 :
             huong = "SANG TRAI"
-        elif sai_so > 5:
+        elif sai_so_muot > 5:
             huong = "SANG PHAI"
         else:
             huong = "GIUA"
-        cv2.putText(frame, f"{huong}_(sai so: {sai_so:.2f})", (x, max(y - 10, 15)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
+        cv2.putText(frame, f"{huong} (sai so: {sai_so_muot:.2f}) <s_tho: {s_tho:.2f}> <s_muot: {s_muot:.2f}>", (x, max(y - 10, 15)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
     else:
+        lich_su.clear()
         cv2.putText(frame, f"KHONG THAY VAT", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
     cv2.imshow("webcam", frame)
     if cv2.waitKey(1) & 0xFF == ord("q"):
         break
 cap.release()
 cv2.destroyAllWindows()
+
+if len(tho) > 2:
+    print("so khung    :", len(tho))
+    print("min / max   :", min(tho), "/", max(tho))
+    print("mean        :", statistics.mean(tho))
+    print("nhieu tho   :", nhieu(tho))
+    print("nhieu muot  :", nhieu(muot))
