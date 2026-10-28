@@ -48,7 +48,7 @@ while True:
             huong = "SANG PHAI"
         else:
             huong = "GIUA"
-        cv2.putText(frame, f"{huong} (sai so: {sai_so_muot:.2f}) <s_tho: {s_tho:.2f}> <s_muot: {s_muot:.2f}>", (x, max(y - 10, 15)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
+        cv2.putText(frame, f"{huong} (sai so: {sai_so_muot:.2f}) ", (x, max(y - 10, 15)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
     else:
         lich_su.clear()
         cv2.putText(frame, f"KHONG THAY VAT", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
