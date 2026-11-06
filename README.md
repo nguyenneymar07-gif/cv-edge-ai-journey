@@ -58,7 +58,6 @@ Nhật ký học Computer Vision + Edge AI (11/2026 - 6/2029).
 - Chưa đổi độ trễ từ khung hình sang mili giây (chưa đo fps thật)
 - Kịch bản giantiep, tructiep mới có 3 lần đo, cần đủ 5
 
-### Mai làm
-1. Kiểm tra khóa phơi sáng có hiệu lực không (in giá trị sau khi set, ghi độ sáng trung bình mỗi khung vào CSV)
-2. Chạy riêng 3 cấu hình trên choi, mỗi cấu hình 7 lần: chỉ khóa phơi sáng, chỉ loại khung, và tb5 thuần
-3. Đo fps thật, bổ sung 2 lần đo cho giantiep và tructiep
+### 7/11/2026
+- đã làm: thêm hàm sapxep; thêm cử sổ "phang"
+
