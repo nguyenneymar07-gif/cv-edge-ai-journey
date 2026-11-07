@@ -60,4 +60,5 @@ Nhật ký học Computer Vision + Edge AI (11/2026 - 6/2029).
 
 ### 7/11/2026
 - đã làm: thêm hàm sapxep; thêm cử sổ "phang"
+- Tự động tìm được 4 góc ở ảnh giấy trên nền tương phản. Không chạy được với nền có họa tiết hoặc màu gần giấy(anh_giay_xeo.jpg và anh_giay_an.jpg). Chưa làm: nhị phân hóa thích nghi, nắn trên ảnh gốc, chọn góc bằng chuột.
 

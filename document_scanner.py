@@ -1,7 +1,7 @@
 import cv2 
 import numpy as np
 
-im = cv2.imread("image_and_video/anh_giay_trang.jpg")
+im = cv2.imread("image_and_video/anh_giay_an.jpg")
 if im is None :
     raise FileNotFoundError("khong tim thay anh")
     
@@ -23,12 +23,18 @@ if biggest is not None and cv2.contourArea(biggest) > 500:
     epsilon = 0.02 * peri
     approx = cv2.approxPolyDP(biggest, epsilon, True)
 
-
 if approx is not None and len(approx) == 4:
     print("Da tim thay 4 goc")
 else:
-    print("khong phai 4 goc ma la ", len(approx), " goc")
-    raise SystemExit("khong phai 4 goc")
+    n = 0 if approx is None else len(approx)
+    print("so goc cua ung vien tot nhat:", n)
+    debug = im.copy()
+    cv2.drawContours(debug, contours, -1, (0, 255, 0), 2)   # contours = danh sach 5 cai lon nhat
+    cv2.imshow("canny", im_edge)
+    cv2.imshow("5 contour lon nhat", debug)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+    raise SystemExit("Khong tim duoc 4 goc")
     
 for point in approx:
     x, y = point[0]
@@ -68,3 +74,5 @@ cv2.imshow("goc", im)
 cv2.imshow("phang", phang)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+cv2.imshow("canny", im_edge)
+print("so goc:", None if approx is None else len(approx))
