@@ -66,3 +66,7 @@ Nhật ký học Computer Vision + Edge AI (11/2026 - 6/2029).
 - Kernel làm mờ có trọng số dương, tổng bằng 1, nên mỗi pixel thành trung bình của vùng quanh nó. Sobel có tổng bằng 0 nên vùng phẳng cho 0, còn nơi độ sáng đổi từ trái sang phải cho giá trị lớn (dương hoặc âm tùy hướng đổi). Cùng một phép trượt và nhân, chỉ đổi số trong kernel là đổi từ làm mờ sang tìm biên.
 - độ chênh 0.000244 và 0.000000, thời gian 2.67s so với 0.012s và 2.31s so với 0.002s, kèm lưu ý chỉ là một lần chạy
 
+### 9/11/2026
+- tao file tính trung bình, min, max, tong từ file so.txt bằng for của C++.
+- File 4 5 abc 6: dự đoán chương trình đọc 4 và 5 rồi dừng ở abc, bỏ 6, và không báo lỗi gì.
+

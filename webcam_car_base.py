@@ -58,9 +58,9 @@ while True:
 cap.release()
 cv2.destroyAllWindows()
 
-if len(tho) > 2:
-    print("so khung    :", len(tho))
-    print("min / max   :", min(tho), "/", max(tho))
-    print("mean        :", statistics.mean(tho))
-    print("nhieu tho   :", nhieu(tho))
-    print("nhieu muot  :", nhieu(muot))
+#if len(tho) > 2:
+#    print("so khung    :", len(tho))
+#    print("min / max   :", min(tho), "/", max(tho))
+#    print("mean        :", statistics.mean(tho))
+#    print("nhieu tho   :", nhieu(tho))
+#    print("nhieu muot  :", nhieu(muot))
