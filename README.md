@@ -69,4 +69,11 @@ Nhật ký học Computer Vision + Edge AI (11/2026 - 6/2029).
 ### 9/11/2026
 - tao file tính trung bình, min, max, tong từ file so.txt bằng for của C++.
 - File 4 5 abc 6: dự đoán chương trình đọc 4 và 5 rồi dừng ở abc, bỏ 6, và không báo lỗi gì.
+### 11/11/2026
+- Con trỏ: biến chứa địa chỉ của biến khác, nên dùng nó để đọc hoặc sửa thẳng biến gốc.
+- &: lấy địa chỉ của một biến (&a).
+- *: hai nghĩa tùy chỗ. Trong khai báo, int* p nghĩa là p là con trỏ tới int. Trong biểu thức, *p nghĩa là đi theo địa chỉ để lấy hoặc sửa giá trị ở đó.
+- Theo giá trị: hàm nhận một bản sao của n ở địa chỉ khác, sửa bản sao nên n vẫn là 5.
+- Theo con trỏ: hàm nhận địa chỉ của n rồi sửa thẳng n, nên ra 6.
+- Theo tham chiếu: x chính là n dưới một tên khác, nên ra 7.
 
