@@ -78,3 +78,8 @@ Nhật ký học Computer Vision + Edge AI (11/2026 - 6/2029).
 - Theo tham chiếu: x chính là n dưới một tên khác, nên ra 7.
 ### 13/11/2026
 - Ảnh trong máy tính là một ma trận giá trị pixel, và mỗi pixel có tọa độ là một vector. Nhân ma trận quan trọng với ảnh vì hai lẽ. Một là các phép biến đổi hình học như xoay, lật, kéo giãn, nghiêng đều là nhân ma trận với tọa độ (nắn phối cảnh dùng ma trận 3×3). Hai là xử lý ảnh nói chung, từ convolution đến mạng nơ-ron, đều dựa trên các phép tính ma trận. Thứ tự các phép biến đổi quan trọng vì nhân ma trận không giao hoán.
+- kết quả:
+0 W = 1.0026799684196852 -> [-7.08643593e-15  1.41728719e-14] so với [0. 0.]
+1 W = 0.9938218627675768 -> [3.24000000e+02 1.42991971e-14] so với [324.   0.]
+2 W = 1.0187889707301667 -> [324. 449.] so với [324. 449.]
+3 W = 1.0280998241657144 -> [  0. 449.] so với [  0. 449.]
