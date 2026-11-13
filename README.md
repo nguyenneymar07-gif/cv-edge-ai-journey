@@ -76,4 +76,5 @@ Nhật ký học Computer Vision + Edge AI (11/2026 - 6/2029).
 - Theo giá trị: hàm nhận một bản sao của n ở địa chỉ khác, sửa bản sao nên n vẫn là 5.
 - Theo con trỏ: hàm nhận địa chỉ của n rồi sửa thẳng n, nên ra 6.
 - Theo tham chiếu: x chính là n dưới một tên khác, nên ra 7.
-
+### 13/11/2026
+- Ảnh trong máy tính là một ma trận giá trị pixel, và mỗi pixel có tọa độ là một vector. Nhân ma trận quan trọng với ảnh vì hai lẽ. Một là các phép biến đổi hình học như xoay, lật, kéo giãn, nghiêng đều là nhân ma trận với tọa độ (nắn phối cảnh dùng ma trận 3×3). Hai là xử lý ảnh nói chung, từ convolution đến mạng nơ-ron, đều dựa trên các phép tính ma trận. Thứ tự các phép biến đổi quan trọng vì nhân ma trận không giao hoán.

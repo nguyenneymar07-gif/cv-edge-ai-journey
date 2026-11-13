@@ -1,7 +1,7 @@
 import cv2 
 import numpy as np
 
-im = cv2.imread("image_and_video/anh_giay_an.jpg")
+im = cv2.imread("image_and_video/anh_giay_trang.jpg")
 if im is None :
     raise FileNotFoundError("khong tim thay anh")
     
@@ -69,6 +69,13 @@ dich = np.array([[0, 0], [rong - 1, 0], [rong - 1, cao - 1], [0, cao - 1]], dtyp
 M = cv2.getPerspectiveTransform(np.array([pst[0], pst[1], pst[2], pst[3]], dtype="float32"), dich)
 phang = cv2.warpPerspective(im, M, (int(rong), int(cao)))
 #warpPerspective nhận kích thước theo thứ tự (rộng, cao), ngược với shape của mảng
+src = np.array(pst[:4], dtype="float32")
+print(M)
+
+for i in range(4):
+    x, y = src[i]
+    p = M @ np.array([x, y, 1])
+    print(i, "W =", p[2], "->", p[:2] / p[2], "so với", dich[i])
 
 cv2.imshow("goc", im)
 cv2.imshow("phang", phang)
