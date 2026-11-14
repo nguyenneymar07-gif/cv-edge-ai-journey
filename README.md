@@ -1,6 +1,83 @@
 # cv-edge-ai-journey
-
 Nhật ký học Computer Vision + Edge AI (11/2026 - 6/2029).
+
+Mục tiêu dài hạn: một chiếc xe nhỏ có camera tự nhìn và tự bám theo vật, về sau chạy AI ngay trên thiết bị nhúng (Raspberry Pi, Jetson).
+
+## Giai đoạn 1 (10-11/2026): tóm tắt
+
+### Đã làm
+
+**C++**
+- `trungbinh.cpp`: đọc số từ file, tính tổng, trung bình, min, max; xử lý file rỗng và không có file
+- `maytinh.cpp`: máy tính 4 phép, chạy lặp bằng `while`, thoát bằng `q`
+- `contro.cpp`: con trỏ và tham chiếu (`&`, `*`, truyền theo giá trị, theo con trỏ, theo tham chiếu, `nullptr`)
+
+**Python**
+- `maytinh.py`: máy tính bắt lỗi nhập số bằng `try / except`
+- Nhánh phụ, ngoài lộ trình: dựng một agent bằng Python và Ollama chạy local
+
+**OpenCV**
+- `webcam_test.py`: ảnh xám, `GaussianBlur`, `Canny`, lọc màu HSV, contour, vẽ khung, tính tâm, sai số so với giữa khung hình, hướng (trái, phải, giữa), báo khi mất vật, bộ lọc làm mượt sai số
+- `document_scanner.py`: tìm 4 góc tờ giấy, sắp xếp góc, nắn phối cảnh
+
+**NumPy và toán**
+- `convovle2d.py`: convolution 2D tự viết, so với `cv2.filter2D`
+- Ma trận xoay, kéo giãn, tính không giao hoán của phép nhân ma trận
+- Kiểm chứng ma trận phối cảnh `M` với 4 góc của tờ giấy
+
+### Kết quả chính
+
+**Bộ lọc làm mượt sai số** (đo trên 4 kịch bản, mỗi kịch bản 3 đến 7 lần; số liệu lưu trong `tong_hop.csv`)
+
+Độ giật giữa hai khung liên tiếp giảm so với dữ liệu thô:
+
+| Kịch bản | Trung bình trượt 3 khung | 5 khung | 10 khung |
+| --- | --- | --- | --- |
+| Giữ vật gián tiếp (giantiep) | 42.6% | 59.5% | 75.0% |
+| Giữ vật trực tiếp (tructiep) | 61.0% | 72.1% | 81.1% |
+| Ánh sáng chói (choi) | 44.9% | 59.3% | 72.3% |
+| Vật di chuyển (dichuyen) | 23.8% | 27.5% | 29.9% |
+
+Độ trễ (kịch bản dichuyen): khoảng 1.0, 2.0 và 4.0 khung hình cho cửa sổ 3, 5 và 10. Chọn tạm **trung bình trượt 5 khung** vì cửa sổ 10 trễ gấp đôi mà chỉ hơn rõ ở một kịch bản. Chưa đo trên xe thật.
+
+**Convolution 2D tự viết** (một lần chạy, ảnh cao 600 pixel)
+
+| Kernel | Chênh so với `filter2D` | Hàm tự viết | `cv2.filter2D` |
+| --- | --- | --- | --- |
+| Làm mờ 9x9 | 2.4e-4 | 2.67 s | 0.012 s |
+| Sobel dọc 3x3 | 0 | 2.31 s | 0.002 s |
+
+Hàm tính tương quan (không lật kernel), giống `filter2D`. Chậm hơn hàng trăm lần vì Python gọi từng pixel một.
+
+**Scanner**
+- Bốn góc của tờ giấy qua ma trận `M` (3x3, tọa độ dạng `[x, y, 1]`) rơi đúng bốn góc ảnh đích 324x449, sai số cỡ 1e-14
+- Phần tử thứ ba của vector sau khi nhân (`W`) nằm trong khoảng 0.994 đến 1.028, nên cần chia ở cuối (đây là phần phối cảnh)
+
+### Vì sao nhân ma trận quan trọng với ảnh
+
+Ảnh trong máy tính là một ma trận giá trị pixel, và mỗi pixel có tọa độ là một vector. Nhân ma trận quan trọng với ảnh vì hai lẽ. Một là các phép biến đổi hình học như xoay, lật, kéo giãn, nghiêng đều là nhân ma trận với tọa độ (nắn phối cảnh dùng ma trận 3x3). Hai là xử lý ảnh nói chung, từ convolution đến mạng nơ-ron, đều dựa trên các phép tính ma trận. Thứ tự các phép biến đổi quan trọng vì nhân ma trận không giao hoán.
+
+### Kết quả âm tính và giới hạn
+
+- **Median thua mean** ở cả 12 cặp cùng cỡ cửa sổ (ví dụ cửa sổ 5: giảm 6.0% so với 59.5% ở giantiep). Lý do (giả thuyết): nhiễu là tâm khung nhích 1 pixel liên tục, không phải đột biến lẻ, mà median chỉ giỏi loại đột biến.
+- **Ánh sáng ổn định** (đèn chiếu thẳng hay quay đi) gần như không ảnh hưởng nhiễu. Nhiễu lớn đến từ ánh sáng **đổi đột ngột**; chỉ có một lần đo cho mỗi cỡ cửa sổ nên mới là dấu hiệu, chưa phải kết luận.
+- **Khóa phơi sáng và loại khung bất thường** (bản gộp) chưa hơn trung bình trượt ở kịch bản nào. Chưa rõ khóa phơi sáng có hiệu lực không, và hai thay đổi đang gộp nên chưa tách được tác dụng từng cái.
+- **Scanner** chỉ chạy với nền tương phản với giấy. Nền có họa tiết lặp hoặc màu gần giấy thì không tìm được 4 góc (đã thử 2 ảnh).
+- Một lần đo cho kết quả toàn 0 vì vật đứng yên tuyệt đối nên không có nhiễu để so, đã loại khỏi bảng.
+
+### Chưa làm
+
+- Trị riêng, Matplotlib
+- Scanner: nhị phân hóa thích nghi (`adaptiveThreshold`), nắn trên ảnh gốc thay vì ảnh thu nhỏ, chọn góc bằng chuột, tách giấy bằng màu HSV rồi `minAreaRect`
+- Tăng tốc convolution bằng `sliding_window_view`, đo lặp 3 đến 5 lần
+- Đo fps và độ trễ ra mili giây, đo lại bộ lọc trên xe thật
+- Tách riêng tác dụng của khóa phơi sáng và loại khung bất thường
+
+### Ghi chú
+
+Không đăng ảnh hay GIF có mặt hoặc phòng vì repo công khai, thay bằng bảng số đo.
+
+## Nhật ký từng ngày
 
 ## 24/10/2026
 - Đã làm: cài Python, VS Code, Git; tạo repo GitHub ; Cài đặt MSYS2 UCRT64, cấu hình g++ compiler và chạy chương trình hello.cpp đầu tiên.
