@@ -160,3 +160,7 @@ Không đăng ảnh hay GIF có mặt hoặc phòng vì repo công khai, thay b�
 1 W = 0.9938218627675768 -> [3.24000000e+02 1.42991971e-14] so với [324.   0.]
 2 W = 1.0187889707301667 -> [324. 449.] so với [324. 449.]
 3 W = 1.0280998241657144 -> [  0. 449.] so với [  0. 449.]
+### 15/11/2026
+- tinh toán độ lệch nhiễu, giá trị trung bình
+- mai làm: vẽ biểu đồ so sánh giữa tb5 và med5
+- vecto riêng: vecto riêng của một ma trận A là vecto mà khi nhân với ma trận chỉ có thể thay đổi kích thước hoặc đảo chiều chứ không thể xoay vecto(vector riêng vẫn nằm trên cùng một đường thẳng đi qua gốc tọa độ sau khi nhân với ma trận A) và phải là vecto khác 0.
