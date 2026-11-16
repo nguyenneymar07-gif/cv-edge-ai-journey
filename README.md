@@ -164,3 +164,5 @@ Không đăng ảnh hay GIF có mặt hoặc phòng vì repo công khai, thay b�
 - tinh toán độ lệch nhiễu, giá trị trung bình
 - mai làm: vẽ biểu đồ so sánh giữa tb5 và med5
 - vecto riêng: vecto riêng của một ma trận A là vecto mà khi nhân với ma trận chỉ có thể thay đổi kích thước hoặc đảo chiều chứ không thể xoay vecto(vector riêng vẫn nằm trên cùng một đường thẳng đi qua gốc tọa độ sau khi nhân với ma trận A) và phải là vecto khác 0.
+### 16/11/2026
+- ![Trung bình trượt so với median](images/bo_loc_A.png).
