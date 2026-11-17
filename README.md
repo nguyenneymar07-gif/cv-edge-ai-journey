@@ -166,3 +166,8 @@ Không đăng ảnh hay GIF có mặt hoặc phòng vì repo công khai, thay b�
 - vecto riêng: vecto riêng của một ma trận A là vecto mà khi nhân với ma trận chỉ có thể thay đổi kích thước hoặc đảo chiều chứ không thể xoay vecto(vector riêng vẫn nằm trên cùng một đường thẳng đi qua gốc tọa độ sau khi nhân với ma trận A) và phải là vecto khác 0.
 ### 16/11/2026
 - ![Trung bình trượt so với median](images/bo_loc_A.png).
+- trung bình trượt cho mức giảm trung bình cao hơn ở cả 4 kịch bản, nhưng chỉ tách rõ khỏi độ biến động ở giantiep và choi.
+### 17/11/2026
+- Machinelearning:
+image_and_video/ang_cong_thuc_ML.png
+- thực hành Linear Regression bằng Python và NumPy từ đầu, không dùng thư viện Machine Learning có sẵn. (linear_regression.py)
